@@ -1,0 +1,397 @@
+<html id="htmlid"><head>
+<title>KeyAno</title>
+<script src="audiosynth.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {
+  box-sizing:border-box
+}
+
+.parent {
+height: 0;
+padding-bottom: 56.25%;
+position: relative;
+}
+
+.child {
+position:absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+body {
+  min-width: 1300px;
+  margin:0;
+  background:#222
+}
+
+ul {
+  height:20em;
+  width:1190;
+  margin: 0 10% 0 10%;
+  padding: 3rem;
+  position:relative;
+  border:1px solid #160801;
+  border-radius:1em;
+  background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)),url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/187/vwood.png);
+  box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)
+}
+
+li {
+  margin:auto;
+  padding:0;
+  list-style:none;
+  position:relative;
+  float:left
+}
+
+ul .white {
+  height:16em;
+  width: 6.85%;
+  min-width: 2.5em;
+  max-width: 5em;
+  z-index:1;
+  border-left:1px solid #bbb;
+  border-bottom:1px solid #bbb;
+  border-radius:0 0 5px 5px;
+  box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
+  background:linear-gradient(to bottom,#eee 0%,#fff 100%)
+}
+
+ul .white:active {
+  border-top:1px solid #777;
+  border-left:1px solid #999;
+  border-bottom:1px solid #999;
+  box-shadow:2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
+  background:linear-gradient(to bottom,#fff 0%,#e9e9e9 100%)
+}
+
+.black {
+  color: white;
+  text-align: center;
+  height:8em;
+  width: 4%;
+  min-width: 2em;
+  max-width: 5em;
+  margin:0 0 0 -1.5em;
+  z-index:2;
+  border:1px solid #000;
+  border-radius:0 0 3px 3px;
+  box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -5px 2px 3px rgba(0,0,0,0.6) inset,0 2px 4px rgba(0,0,0,0.5);
+  background:linear-gradient(45deg,#222 0%,#555 100%)
+}
+
+.black:active {
+  box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -2px 2px 3px rgba(0,0,0,0.6) inset,0 1px 2px rgba(0,0,0,0.5);
+  background:linear-gradient(to right,#444 0%,#222 100%)
+}
+
+.a,.g,.f,.d,.c {
+  margin:0 0 0 -1em
+}
+
+ul li:first-child {
+  border-radius:5px 0 5px 5px
+}
+
+ul li:last-child {
+  border-radius:0 5px 5px 5px
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  background-color: #bdc3c7;
+  width: 300px;
+  height: 5px;
+  border-radius: 5px;
+  outline: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #FF0D97;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+  input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: white;
+    border: 2px solid #e74c3c;
+  }
+  input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.6);
+  }
+@import url(https://fonts.googleapis.com/css?family=Lato&subset=latin-ext);
+h1{
+	width: 100%;
+	height: 130px;
+	margin-top: 40px;
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+	font-size: 100px;
+	font-weight: 600;
+	color: rgba(240,240,240,0.5);
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
+<meta name="viewport" content="width=device-width,user-scalable=no">
+</head>
+
+<body id="bodyid" style="width: 100%; height: 100%;" onkeydown="keyNote(event)">
+<i id="settings" style="font-size:24px; color: white;" class="fa"></i>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">×</span>
+	<p>Choose a Keyano Wallpaper...</p>
+	<button onclick="changeWallpaper('WoodenWallpaper1.jpg');"><img style="width: 100px;" src="WoodenWallpaper1.jpg"></button>
+	<button onclick="changeWallpaper('WoodenWallpaper2.jpg');"><img style="width: 100px;" src="WoodenWallpaper2.jpg"></button>
+	<button onclick="changeWallpaper('WoodenWallpaper3.jpg');"><img style="width: 100px;" src="WoodenWallpaper3.jpg"></button>
+	<button onclick="changeWallpaper('WoodenWallpaper4.png');"><img style="width: 100px;" src="WoodenWallpaper4.png"></button>
+	<button onclick="changeWallpaper('WoodenWallpaper5.jpg');"><img style="width: 100px;" src="WoodenWallpaper5.jpg"></button>
+	<script>
+		function changeWallpaper(string) {
+			var body = document.body;
+			body.style.Height = "100%";
+			body.style.backgroundImage = "url(" + string + ")";
+		}
+	</script>
+  </div>
+
+</div>
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("settings");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+<h1>
+	Keyano
+</h1>
+<ul class="set">
+  <!--Section 1!-->
+  <li class="white b" onclick="playNote('F', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F4</p></li>
+  <li class="black as" onclick="playNote('F#', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F#</p></li>
+  <li class="white a" onclick="playNote('G', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G4</p></li>
+  <li class="black gs" onclick="playNote('G#', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G#</p></li>
+  <li class="white g" onclick="playNote('A', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A4</p></li>
+  <li class="black fs" onclick="playNote('A#', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A#</p></li>
+  <li class="white f" onclick="playNote('B', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">B4</p></li>
+  <li class="white e" onclick="playNote('C', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C5</p></li>
+  <li class="black ds" onclick="playNote('C#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C#</p></li>
+  <li class="white d" onclick="playNote('D', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D5</p></li>
+  <li class="black cs" onclick="playNote('D#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D#</p></li>
+  <li class="white c" onclick="playNote('E', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">E5</p></li>
+  <!--Section 2!-->
+  <li class="white b" onclick="playNote('F', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F5</p></li>
+  <li class="black as" onclick="playNote('F#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F#</p></li>
+  <li class="white a" onclick="playNote('G', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G5</p></li>
+  <li class="black gs" onclick="playNote('G#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G#</p></li>
+  <li class="white g" onclick="playNote('A', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A5</p></li>
+  <li class="black fs" onclick="playNote('A#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A#</p></li>
+  <li class="white f" onclick="playNote('B', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">B5</p></li>
+  <li class="white e" onclick="playNote('C', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C6</p></li>
+  <li class="black ds" onclick="playNote('C#', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C#</p></li>
+  <li class="white d" onclick="playNote('D', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D6</p></li>
+  <li class="black cs" onclick="playNote('D#', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D#</p></li>
+  <li class="white c" onclick="playNote('E', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">E6</p></li>
+</ul>
+<div>
+	<div style="margin-top: 20px;">
+		<label style="margin-top: 10px; margin-left: 16%; font-family: Garamond; font-size: 22px; color: white;">Octave Adjustment</label>
+		<label style="margin-top: 10px; margin-left: 18%; font-family: Garamond; font-size: 22px; color: white;">Volume Adjustment</label>
+		<label style="margin-top: 10px; margin-left: 17%; font-family: Garamond; font-size: 22px; color: white;">Note Duration</label>
+	</div>
+	<div>
+		<form>
+			<input class="slider" id="octavechanger" type="range" value="3" style="margin-left: 11%;" min="1" max="8" onchange="changeOctave()">
+			<input class="slider" id="volumechanger" type="range" value="3" style="margin-left: 9.5%;" min="0" max="1" step="0.01" onchange="changeVolume()">
+			<input class="slider" id="durationchanger" type="range" value="3" style="margin-left: 7%;" min="1" max="5" onchange="changeDuration()">
+		</form>
+	</div>
+</div>
+<script>
+	Synth instanceof AudioSynth; 
+
+	var testInstance = new AudioSynth;
+	testInstance instanceof AudioSynth; 
+
+	testInstance === Synth; 
+	
+	var piano = Synth.createInstrument('piano');
+	var organ = Synth.createInstrument('organ');
+	var acoustic = Synth.createInstrument('acoustic');
+	var edm = Synth.createInstrument('edm');
+	var intrumentid = 0;
+	var octave = document.getElementById("octavechanger").value-1+1;
+	var duration = document.getElementById("durationchanger").value-1+1;
+	var volume = document.getElementById("volumechanger").value-1+1;
+	function changeOctave() {
+		var octavechanger = document.getElementById("octavechanger");
+		octave = octavechanger.value-1+1;
+	}
+	function changeDuration() {
+		var durationchanger = document.getElementById("durationchanger");
+		duration = durationchanger.value-1+1;
+	}
+	function changeVolume() {
+		var volumechanger = document.getElementById("volumechanger");
+		volume = volumechanger.value;
+		Synth.setVolume(volume);
+	}
+	function keyNote (event) {
+		var note = event.key.toUpperCase();
+		var oct = octave;
+		var dur = duration;
+		switch(note) {
+			case 'Q':
+				note = 'F';
+				break;
+			case 'W':
+				note = 'G';
+				break;
+			case 'E':
+				note = 'A';
+				break;
+			case 'R':
+				note = 'B';
+				break;
+			case 'T':
+				note = 'C';
+				oct += 1;
+				break;
+			case 'Y':
+				note = 'D';
+				oct += 1;
+				break;
+			case 'U':
+				note = 'E';
+				oct += 1;
+				break;
+			case 'I':
+				note = 'F';
+				oct += 1;
+				break;
+			case 'O':
+				note = 'G';
+				oct += 1;
+				break;
+			case 'P':
+				note = 'A';
+				oct += 1;
+				break;
+			case '[':
+				note = 'B';
+				oct += 1;
+				break;
+			case ']':
+				note = 'C';
+				oct += 2;
+				break;
+			case 'A':
+				note = 'D';
+				oct += 2;
+				break;	
+			case 'S':
+				note = 'E';
+				oct += 2;
+				break;
+			case 'D':
+				note = 'F';
+				oct += 2;
+				break;
+			case 'F':
+				note = 'G';
+				oct += 2;
+				break;
+			case 'G':
+				note = 'A';
+				oct += 2;
+				break;
+			case 'H':
+				note = 'B';
+				oct += 2;
+				break;
+			case 'J':
+				note = 'C';
+				oct += 3;
+				break;
+		}
+		playNote(note, oct, dur);
+	}
+	function playScale () {
+		var notes = new Array(8);
+		notes[0] = 'C';
+		notes[1] = 'D';
+		notes[2] = 'E';
+		notes[3] = 'F';
+		notes[4] = 'G';
+		notes[5] = 'A';
+		notes[6] = 'B';
+		notes[7] = 'C';
+		for(var i = 0; i < 8; i++) {
+			if(i != 7)
+				playNote(notes[i], 4, 2);
+			else
+				playNote(notes[i], 5, 2);
+		}
+	}
+	function playNote (note, octave, duration) {
+		Synth.play(intrumentid, note, octave, duration);
+	}
+</script>
+
+</body></html>
