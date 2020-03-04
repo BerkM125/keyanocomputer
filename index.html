@@ -279,9 +279,9 @@ window.onclick = function(event) {
 	var acoustic = Synth.createInstrument('acoustic');
 	var edm = Synth.createInstrument('edm');
 	var intrumentid = 0;
-	var octave = document.getElementById("octavechanger").value-1+1;
-	var duration = document.getElementById("durationchanger").value-1+1;
-	var volume = document.getElementById("volumechanger").value-1+1;		
+	var octave = document.getElementById("octavechanger").value;
+	var duration = document.getElementById("durationchanger").value;
+	var volume = document.getElementById("volumechanger").value;		
 	var keyset1 = new Array(7);
 		var keyset2 = new Array(12);				
 		var keyset3 = new Array(5);
@@ -316,7 +316,7 @@ window.onclick = function(event) {
 	}
 	function changeDuration() {
 		var durationchanger = document.getElementById("durationchanger");
-		duration = durationchanger.value-1+1;
+		duration = durationchanger.value;
 	}
 	function changeVolume() {
 		var volumechanger = document.getElementById("volumechanger");
