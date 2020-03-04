@@ -32,7 +32,9 @@
 	<script>
 		function changeWallpaper(string) {
 			var body = document.body;
-			body.style.Height = "100%";
+			if(string != 'Themes/WoodenWallpaper5.jpg') {
+				body.style.Height = "100%";
+			}
 			body.style.backgroundImage = "url(" + string + ")";
 		}
 	</script>
