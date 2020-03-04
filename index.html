@@ -28,6 +28,8 @@
 	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper4.png');" src="Themes/WoodenWallpaper4.png">
 	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper5.jpg');" src="Themes/WoodenWallpaper5.jpg">
 	<img style="width: 100px;" onclick="changeWallpaper('Themes/NyanCatBackground1.jpg');" src="Themes/NyanCatBackground1.jpg">
+	<img style="width: 100px;" onclick="changeWallpaper('Themes/NyanCatBackground2.jpg');" src="Themes/NyanCatBackground2.jpg">
+	<img style="width: 100px;" onclick="changeWallpaper('Themes/NyanCatBackground3.jpg');" src="Themes/NyanCatBackground3.jpg">
 	<script>
 		function changeWallpaper(string) {
 			var body = document.body;
@@ -57,33 +59,38 @@ window.onclick = function(event) {
 <h1>
 	Keyano
 </h1>
+<style>
+	ul.set li p{
+		align-content: center; position: absolute; font-family: Calibri; bottom: 10px;
+	}
+</style>
 <ul class="set">
   <!--Section 1!-->
-  <li class="white b" onclick="playNote('F', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F4</p></li>
-  <li class="black as" onclick="playNote('F#', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F#</p></li>
-  <li class="white a" onclick="playNote('G', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G4</p></li>
-  <li class="black gs" onclick="playNote('G#', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G#</p></li>
-  <li class="white g" onclick="playNote('A', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A4</p></li>
-  <li class="black fs" onclick="playNote('A#', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A#</p></li>
-  <li class="white f" onclick="playNote('B', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">B4</p></li>
-  <li class="white e" onclick="playNote('C', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C5</p></li>
-  <li class="black ds" onclick="playNote('C#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C#</p></li>
-  <li class="white d" onclick="playNote('D', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D5</p></li>
-  <li class="black cs" onclick="playNote('D#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D#</p></li>
-  <li class="white c" onclick="playNote('E', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">E5</p></li>
+  <li class="white b" onclick="playNote('F', octave, duration)"><p>F4</p></li>
+  <li class="black as" onclick="playNote('F#', octave, duration)"><p>F#</p></li>
+  <li class="white a" onclick="playNote('G', octave, duration)"><p>G4</p></li>
+  <li class="black gs" onclick="playNote('G#', octave, duration)"><p>G#</p></li>
+  <li class="white g" onclick="playNote('A', octave, duration)"><p>A4</p></li>
+  <li class="black fs" onclick="playNote('A#', octave, duration)"><p>A#</p></li>
+  <li class="white f" onclick="playNote('B', octave, duration)"><p>B4</p></li>
+  <li class="white e" onclick="playNote('C', octave+1, duration)"><p>C5</p></li>
+  <li class="black ds" onclick="playNote('C#', octave+1, duration)"><p>C#</p></li>
+  <li class="white d" onclick="playNote('D', octave+1, duration)"><p>D5</p></li>
+  <li class="black cs" onclick="playNote('D#', octave+1, duration)"><p>D#</p></li>
+  <li class="white c" onclick="playNote('E', octave+1, duration)"><p>E5</p></li>
   <!--Section 2!-->
-  <li class="white b" onclick="playNote('F', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F5</p></li>
-  <li class="black as" onclick="playNote('F#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F#</p></li>
-  <li class="white a" onclick="playNote('G', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G5</p></li>
-  <li class="black gs" onclick="playNote('G#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G#</p></li>
-  <li class="white g" onclick="playNote('A', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A5</p></li>
-  <li class="black fs" onclick="playNote('A#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A#</p></li>
-  <li class="white f" onclick="playNote('B', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">B5</p></li>
-  <li class="white e" onclick="playNote('C', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C6</p></li>
-  <li class="black ds" onclick="playNote('C#', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C#</p></li>
-  <li class="white d" onclick="playNote('D', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D6</p></li>
-  <li class="black cs" onclick="playNote('D#', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D#</p></li>
-  <li class="white c" onclick="playNote('E', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">E6</p></li>
+  <li class="white b" onclick="playNote('F', octave+1, duration)"><p>F5</p></li>
+  <li class="black as" onclick="playNote('F#', octave+1, duration)"><p>F#</p></li>
+  <li class="white a" onclick="playNote('G', octave+1, duration)"><p>G5</p></li>
+  <li class="black gs" onclick="playNote('G#', octave+1, duration)"><p>G#</p></li>
+  <li class="white g" onclick="playNote('A', octave+1, duration)"><p>A5</p></li>
+  <li class="black fs" onclick="playNote('A#', octave+1, duration)"><p>A#</p></li>
+  <li class="white f" onclick="playNote('B', octave+1, duration)"><p>B5</p></li>
+  <li class="white e" onclick="playNote('C', octave+2, duration)"><p>C6</p></li>
+  <li class="black ds" onclick="playNote('C#', octave+2, duration)"><p>C#</p></li>
+  <li class="white d" onclick="playNote('D', octave+2, duration)"><p>D6</p></li>
+  <li class="black cs" onclick="playNote('D#', octave+2, duration)"><p>D#</p></li>
+  <li class="white c" onclick="playNote('E', octave+2, duration)"><p>E6</p></li>
 </ul>
 <div>
 	<div style="margin-top: 20px;">
