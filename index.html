@@ -13,12 +13,22 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">×</span>
-	<p>Choose a Keyano Wallpaper...</p>
-	<button onclick="changeWallpaper('WoodenWallpaper1.jpg');"><img style="width: 100px;" src="WoodenWallpaper1.jpg"></button>
-	<button onclick="changeWallpaper('WoodenWallpaper2.jpg');"><img style="width: 100px;" src="WoodenWallpaper2.jpg"></button>
-	<button onclick="changeWallpaper('WoodenWallpaper3.jpg');"><img style="width: 100px;" src="WoodenWallpaper3.jpg"></button>
-	<button onclick="changeWallpaper('WoodenWallpaper4.png');"><img style="width: 100px;" src="WoodenWallpaper4.png"></button>
-	<button onclick="changeWallpaper('WoodenWallpaper5.jpg');"><img style="width: 100px;" src="WoodenWallpaper5.jpg"></button>
+	<style>
+		img:hover {
+			width: 250px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			text-align: center;
+		}
+	</style>
+	<p>Choose a Keyano Wallpaper</p>
+	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper1.jpg');" src="Themes/WoodenWallpaper1.jpg">
+	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper2.jpg');" src="Themes/WoodenWallpaper2.jpg">
+	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper3.jpg');" src="Themes/WoodenWallpaper3.jpg">
+	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper4.png');" src="Themes/WoodenWallpaper4.png">
+	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper5.jpg');" src="Themes/WoodenWallpaper5.jpg">
+	<img style="width: 100px;" onclick="changeWallpaper('Themes/NyanCatBackground1.jpg');" src="Themes/NyanCatBackground1.jpg">
+	<img style="width: 100px;" onclick="changeWallpaper('Themes/NyanCatBackground2.jpg');" src="Themes/NyanCatBackground2.jpg">
+	<img style="width: 100px;" onclick="changeWallpaper('Themes/NyanCatBackground3.jpg');" src="Themes/NyanCatBackground3.jpg">
 	<script>
 		function changeWallpaper(string) {
 			var body = document.body;
