@@ -192,3 +192,11 @@ h2{
     color: none;
     background: none;
 }
+
+div#settings {
+    font-size:50px;
+    color: white;
+}
+div#settings:hover {
+    color: lightgray;
+}
