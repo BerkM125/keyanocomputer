@@ -1,5 +1,5 @@
 <html id="htmlid"><head>
-<title>Keyano</title>
+<title>KeyAno</title>
 <script src="audiosynth.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheet.css">
@@ -7,8 +7,8 @@
 </head>
 
 <body id="bodyid" style="width: 100%; height: 100%;" onkeydown="keyNote(event)">
-<div id="settings" class="fa"></div>
-<div id="myModal" class="modal">
+<i id="settings" style="font-size:24px; color: white;" class="fa"></i>
+<div id="myModal" class="modal" style="display: none;">
 
   <!-- Modal content -->
   <div class="modal-content">
@@ -16,19 +16,38 @@
 	<style>
 		img:hover {
 			width: 250px;
-			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 			text-align: center;
 		}
 	</style>
-	<p>Choose a Keyano Wallpaper</p>
-	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper1.jpg');" src="Themes/WoodenWallpaper1.jpg">
-	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper2.jpg');" src="Themes/WoodenWallpaper2.jpg">
-	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper3.jpg');" src="Themes/WoodenWallpaper3.jpg">
-	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper4.png');" src="Themes/WoodenWallpaper4.png">
-	<img style="width: 100px;" onclick="changeWallpaper('Themes/WoodenWallpaper5.jpg');" src="Themes/WoodenWallpaper5.jpg">
-	<img style="width: 100px;" onclick="changeWallpaper('Themes/NyanCatBackground1.jpg');" src="Themes/NyanCatBackground1.jpg">
-	<img style="width: 100px;" onclick="changeWallpaper('Themes/NyanCatBackground2.jpg');" src="Themes/NyanCatBackground2.jpg">
-	<img style="width: 100px;" onclick="changeWallpaper('Themes/NyanCatBackground3.jpg');" src="Themes/NyanCatBackground3.jpg">
+	<p style="font-family: 'Lato', sans-serif; font-weight: bold;">Choose a Keyano Wallpaper:</p>
+	<img style="width: 100px; height: 60px;" onclick="changeWallpaper('Themes/WoodenWallpaper1.jpg');" src="Themes/WoodenWallpaper1.jpg">
+	<img style="width: 100px; height: 60px;" onclick="changeWallpaper('Themes/WoodenWallpaper2.jpg');" src="Themes/WoodenWallpaper2.jpg">
+	<img style="width: 100px; height: 60px;" onclick="changeWallpaper('Themes/WoodenWallpaper3.jpg');" src="Themes/WoodenWallpaper3.jpg">
+	<img style="width: 100px; height: 60px;" onclick="changeWallpaper('Themes/WoodenWallpaper4.png');" src="Themes/WoodenWallpaper4.png">
+	<img style="width: 100px; height: 60px;" onclick="changeWallpaper('Themes/WoodenWallpaper5.jpg');" src="Themes/WoodenWallpaper5.jpg">
+	<img style="width: 100px; height: 60px;" onclick="changeWallpaper('Themes/NyanCatBackground1.jpg');" src="Themes/NyanCatBackground1.jpg">
+	<img style="width: 100px; height: 60px;" onclick="changeWallpaper('Themes/NyanCatBackground2.jpg');" src="Themes/NyanCatBackground2.jpg">
+	<img style="width: 100px; height: 60px;" onclick="changeWallpaper('Themes/NyanCatBackground3.jpg');" src="Themes/NyanCatBackground3.jpg">
+	<div>
+	<p style="font-family: 'Lato', sans-serif; font-weight: bold;">Synthesizer Settings:</p>
+	<div style="margin-top: 20px;">
+		<table>
+			<tbody><tr>
+				<th style="padding-right: 100px;">Octave</th>
+				<th style="padding-right: 90px;">Volume</th>
+				<th>Note Duration</th>
+			</tr>
+		</tbody></table>
+	</div>
+	<div>
+		<form>
+			<input class="slider" id="octavechanger" type="range" value="3" min="1" max="8" onchange="changeOctave()">
+			<input class="slider" id="volumechanger" type="range" value="3" min="0" max="1" step="0.01" onchange="changeVolume()">
+			<input class="slider" id="durationchanger" type="range" value="3" min="1" max="5" onchange="changeDuration()">
+		</form>
+	</div>
+</div>
 	<script>
 		function changeWallpaper(string) {
 			var body = document.body;
@@ -39,7 +58,6 @@
   </div>
 
 </div>
-
 <script>
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("settings");
@@ -56,53 +74,38 @@ window.onclick = function(event) {
   }
 }
 </script>
-
 <h1>
 	Keyano
 	</h1><h2>By JBSoftwareSystems</h2>
 
 <ul class="set">
   <!--Section 1!-->
-  <li class="white b" onclick="playNote('F', octave, duration)"><p class="keytext" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F3</p></li>
+  <li class="white b" onclick="playNote('F', octave, duration)"><p class="keytext" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F5</p></li>
   <li class="black as" onclick="playNote('F#', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F#</p></li>
-  <li class="white a" onclick="playNote('G', octave, duration)"><p class="keytext" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G3</p></li>
+  <li class="white a" onclick="playNote('G', octave, duration)"><p class="keytext" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G5</p></li>
   <li class="black gs" onclick="playNote('G#', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G#</p></li>
-  <li class="white g" onclick="playNote('A', octave, duration)"><p class="keytext" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A3</p></li>
+  <li class="white g" onclick="playNote('A', octave, duration)"><p class="keytext" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A5</p></li>
   <li class="black fs" onclick="playNote('A#', octave, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A#</p></li>
-  <li class="white f" onclick="playNote('B', octave, duration)"><p class="keytext" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">B3</p></li>
-  <li class="white e" onclick="playNote('C', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C4</p></li>
+  <li class="white f" onclick="playNote('B', octave, duration)"><p class="keytext" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">B5</p></li>
+  <li class="white e" onclick="playNote('C', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C6</p></li>
   <li class="black ds" onclick="playNote('C#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C#</p></li>
-  <li class="white d" onclick="playNote('D', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D4</p></li>
+  <li class="white d" onclick="playNote('D', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D6</p></li>
   <li class="black cs" onclick="playNote('D#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D#</p></li>
-  <li class="white c" onclick="playNote('E', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">E4</p></li>
+  <li class="white c" onclick="playNote('E', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">E6</p></li>
   <!--Section 2!-->
-  <li class="white b" onclick="playNote('F', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F4</p></li>
+  <li class="white b" onclick="playNote('F', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F6</p></li>
   <li class="black as" onclick="playNote('F#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">F#</p></li>
-  <li class="white a" onclick="playNote('G', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G4</p></li>
+  <li class="white a" onclick="playNote('G', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G6</p></li>
   <li class="black gs" onclick="playNote('G#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">G#</p></li>
-  <li class="white g" onclick="playNote('A', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A4</p></li>
+  <li class="white g" onclick="playNote('A', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A6</p></li>
   <li class="black fs" onclick="playNote('A#', octave+1, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">A#</p></li>
-  <li class="white f" onclick="playNote('B', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">B4</p></li>
-  <li class="white e" onclick="playNote('C', octave+2, duration)"><p class="keytext3" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C5</p></li>
+  <li class="white f" onclick="playNote('B', octave+1, duration)"><p class="keytext2" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">B6</p></li>
+  <li class="white e" onclick="playNote('C', octave+2, duration)"><p class="keytext3" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C7</p></li>
   <li class="black ds" onclick="playNote('C#', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">C#</p></li>
-  <li class="white d" onclick="playNote('D', octave+2, duration)"><p class="keytext3" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D5</p></li>
+  <li class="white d" onclick="playNote('D', octave+2, duration)"><p class="keytext3" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D7</p></li>
   <li class="black cs" onclick="playNote('D#', octave+2, duration)"><p style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">D#</p></li>
-  <li class="white c" onclick="playNote('E', octave+2, duration)"><p class="keytext3" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">E5</p></li>
+  <li class="white c" onclick="playNote('E', octave+2, duration)"><p class="keytext3" style="align-content: center; position: absolute; font-family: Calibri; bottom: 10px;">E7</p></li>
 </ul>
-<div>
-	<div style="margin-top: 20px;">
-		<label style="margin-top: 10px; margin-left: 16%; font-family: Garamond; font-size: 22px; color: white;">Octave Adjustment</label>
-		<label style="margin-top: 10px; margin-left: 18%; font-family: Garamond; font-size: 22px; color: white;">Volume Adjustment</label>
-		<label style="margin-top: 10px; margin-left: 17%; font-family: Garamond; font-size: 22px; color: white;">Note Duration</label>
-	</div>
-	<div>
-		<form>
-			<input class="slider" id="octavechanger" type="range" value="3" style="margin-left: 11%;" min="1" max="8" onchange="changeOctave()">
-			<input class="slider" id="volumechanger" type="range" value="3" style="margin-left: 9.5%;" min="0" max="1" step="0.01" onchange="changeVolume()">
-			<input class="slider" id="durationchanger" type="range" value="3" style="margin-left: 7%;" min="1" max="5" onchange="changeDuration()">
-		</form>
-	</div>
-</div>
 <script>
 	Synth instanceof AudioSynth; 
 
