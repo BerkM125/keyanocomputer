@@ -200,3 +200,10 @@ h2{
     background: none;
 }
 
+#settings {
+    width: 20px;
+}
+#settings:hover {
+    opacity: 0.7;
+}
+
