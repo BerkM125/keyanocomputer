@@ -1,4 +1,4 @@
-# keyanocomputer
+# KeyanoComputer
 
 An online piano with custom backgrounds
 
